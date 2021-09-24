@@ -1,14 +1,36 @@
-import { session, useSession } from "next-auth/client";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { useSession } from "next-auth/client";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
 import { selectItems, selectTotal } from "../slices/basketSlice";
-
+const stripPromise = loadStripe(process.env.strip_public_key);
 function Checkout() {
   const products = useSelector(selectItems);
   const total = useSelector(selectTotal);
-  const session = useSession();
+  const [session] = useSession();
+  console.log("this is session ", session);
+  const createCheckoutSession = async () => {
+    const stripe = await stripPromise;
+    // call the backend to create strip checkout
+    const checkoutSession = await axios.post(
+      "/api/create-checkout-session",
+
+      {
+        items: products,
+        email: session.user.email,
+      }
+    );
+    //Redirect custom to strip checkout
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+    if (result.error) {
+      alert(result.error.message);
+    }
+  };
   return (
     <div className="bg-gray-100">
       <Header />
@@ -35,7 +57,7 @@ function Checkout() {
                 title={item.title}
                 rating={item.rating}
                 price={item.price}
-                descritpion={item.descritpion}
+                description={item.description}
                 category={item.category}
                 image={item.image}
                 hasPrime={item.hasPrime}
@@ -52,6 +74,8 @@ function Checkout() {
                 <span className="font-bold ml-2">{`${total} USD`}</span>
               </h2>
               <button
+                role="link"
+                onClick={createCheckoutSession}
                 disabled={!session}
                 className={`button mt-2 ${
                   !session &&

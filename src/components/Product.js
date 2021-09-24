@@ -6,7 +6,7 @@ import { addToBasket } from "../slices/basketSlice";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
-function Product({ id, title, price, descritpion, category, image }) {
+function Product({ id, title, price, description, category, image }) {
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) * MIN_RATING
   );
@@ -19,7 +19,7 @@ function Product({ id, title, price, descritpion, category, image }) {
       id,
       title,
       price,
-      descritpion,
+      description,
       category,
       image,
       hasPrime,
@@ -43,7 +43,7 @@ function Product({ id, title, price, descritpion, category, image }) {
               <StarIcon key={i} className="h-5 text-yellow-500" />
             ))}
         </div>
-        <p className="text-xs my-2 line-clamp-2">{descritpion}</p>
+        <p className="text-xs my-2 line-clamp-2">{description}</p>
         <div className="mb-5">
           <p>{`${price} USD`}</p>
         </div>

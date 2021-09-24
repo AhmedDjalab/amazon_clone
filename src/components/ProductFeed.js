@@ -10,7 +10,7 @@ function ProductFeed({ products }) {
             key={id}
             title={title}
             price={price}
-            descritpion={description}
+            description={description}
             category={category}
             image={image}
           />

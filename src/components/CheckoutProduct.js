@@ -7,7 +7,7 @@ function CheckoutProduct({
   title,
   rating,
   price,
-  descritpion,
+  description,
   category,
   image,
   hasPrime,
@@ -18,7 +18,7 @@ function CheckoutProduct({
       id,
       title,
       price,
-      descritpion,
+      description,
       category,
       image,
       hasPrime,
@@ -46,7 +46,7 @@ function CheckoutProduct({
         </div>
 
         <p className="text-xm mt-2 mb-2 line-clamp-3 text-black">
-          {descritpion}
+          {description}
         </p>
 
         <p>{`${price} USD`}</p>
