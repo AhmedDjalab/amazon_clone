@@ -3,7 +3,6 @@ module.exports = {
     domains: ["links.papareact.com", "fakestoreapi.com"],
   },
   env: {
-    NEXT_PUBLIC_PUBLISHABLE_STRIPE_KEY:
-      process.env.NEXT_PUBLIC_PUBLISHABLE_STRIPE_KEY,
+    stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
   },
 };
