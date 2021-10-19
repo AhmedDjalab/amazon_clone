@@ -4,8 +4,10 @@ Technologies used in the project are :
 Next js / Tailwind Css / Redux / Firebase / Next Auth / Stripe
 
 
-#Demo 
-amazon-clone-nine-ashen.vercel.app
+# Demo 
+
+https://amazon-clone-nine-ashen.vercel.app/
+
 # Installation Steps
 
 ## Using npm
