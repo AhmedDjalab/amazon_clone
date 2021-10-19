@@ -6,7 +6,7 @@ Next js / Tailwind Css / Redux / Firebase / Next Auth / Stripe
 
 # Demo 
 
-https://amazon-clone-nine-ashen.vercel.app/
+https://amazonclone.djaalabahmed.com/
 
 # Installation Steps
 
